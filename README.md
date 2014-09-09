@@ -1,0 +1,12 @@
+# Scaled HTML Mode
+
+A [Scaled] major editing mode for editing HTML files.
+
+Documentation TBD.
+
+## Distribution
+
+Scaled HTML Mode is released under the New BSD License. The most recent version of the code is
+available at http://github.com/scaled/html-mode
+
+[Scaled]: https://github.com/scaled/scaled
