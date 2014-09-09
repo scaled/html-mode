@@ -67,14 +67,14 @@ repository:
    name: string.unquoted.html
    pattern: (?<==)(?:[^\s<>/'"]|/(?!>))+
 patterns:
- multi:
-  name: meta.tag.any.html
-  begin: (<)([a-zA-Z0-9:]++)(?=[^>]*></\2>)
-  bcaps: 1=punctuation.definition.tag.html 2=entity.name.tag.html
-  end: (>(<)/)(\2)(>)
-  ecaps: 1=punctuation.definition.tag.html 2=meta.scope.between-tag-pair.html 3=entity.name.tag.html 4=punctuation.definition.tag.html
-  patterns:
-   include: #tag-stuff
+ # multi:
+ #  name: meta.tag.any.html
+ #  begin: (<)([a-zA-Z0-9:]++)(?=[^>]*></\2>)
+ #  bcaps: 1=punctuation.definition.tag.html 2=entity.name.tag.html
+ #  end: (>(<)/)(\2)(>)
+ #  ecaps: 1=punctuation.definition.tag.html 2=meta.scope.between-tag-pair.html 3=entity.name.tag.html 4=punctuation.definition.tag.html
+ #  patterns:
+ #   include: #tag-stuff
  multi:
   name: meta.tag.preprocessor.xml.html
   begin: (<\?)(xml)
