@@ -7,6 +7,7 @@ package scaled.html
 import org.junit.Assert._
 import org.junit._
 import scaled.TextStore
+import scaled._
 import scaled.grammar._
 import scaled.impl.BufferImpl
 
@@ -25,7 +26,7 @@ class HtmlTest {
     /* 7*/ "}").mkString("\n")
 
   val html = Grammar.parseNDF(getClass.getClassLoader.getResourceAsStream("HTML.ndf"))
-  val grammars = List(html)
+  val grammars = Seq(html)
 
   @Test def debugGrammar () {
     // html.print(System.out)
