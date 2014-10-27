@@ -9,6 +9,7 @@ import scaled.code.Indenter
 import scaled.grammar._
 import scaled.code.{CodeConfig, Commenter}
 import scaled.xml.XmlIndenter
+import java.nio.file.Path
 
 object HtmlConfig extends Config.Defs {
   import EditorConfig._
@@ -31,10 +32,7 @@ object HtmlConfig extends Config.Defs {
     effacer("variable.language.entity", typeStyle)
   )
 
-  val cssGrammar = reloadable("CSS.ndf", Grammar.parseNDF)
-  val jsGrammar = reloadable("JS.ndf", Grammar.parseNDF)
-  val htmlGrammar = reloadable("HTML.ndf", Grammar.parseNDF)
-  def grammars = Seq(cssGrammar(), jsGrammar(), htmlGrammar())
+  val grammars = reloadable(Seq("CSS.ndf", "JS.ndf", "HTML.ndf"))(Grammar.parseNDFs)
 }
 
 @Major(name="html",
@@ -46,7 +44,7 @@ class HtmlMode (env :Env) extends GrammarCodeMode(env) {
   override def dispose () {} // nada for now
 
   override def configDefs = HtmlConfig :: super.configDefs
-  override def grammars = HtmlConfig.grammars
+  override def grammars = HtmlConfig.grammars.get
   override def effacers = HtmlConfig.effacers
 
   override def detectIndent = new Indenter.Detecter(4) {

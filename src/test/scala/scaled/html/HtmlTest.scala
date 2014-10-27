@@ -33,7 +33,7 @@ class HtmlTest {
     // html.scopeNames foreach println
 
     val buffer = BufferImpl(new TextStore("Test.html", "", testHTMLCode))
-    val scoper = new Scoper(grammars, buffer, Nil)
+    val scoper = new Scoper(Grammar.Set(grammars), buffer, Nil)
     println(scoper.showMatchers(Set("#tag-stuff", "#entity")))
   }
 }
