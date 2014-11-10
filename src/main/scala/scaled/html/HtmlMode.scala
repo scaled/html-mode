@@ -5,7 +5,6 @@
 package scaled.html
 
 import scaled._
-import scaled.code.Indenter
 import scaled.grammar._
 import scaled.code.{CodeConfig, Commenter}
 import scaled.xml.XmlIndenter
@@ -47,14 +46,6 @@ class HtmlMode (env :Env) extends GrammarCodeMode(env) {
   override def grammars = HtmlConfig.grammars.get
   override def effacers = HtmlConfig.effacers
 
-  override def detectIndent = new Indenter.Detecter(4) {
-    // if the line starts with '<' then it is meaningful
-    def consider (line :LineV, start :Int) :Int = if (line.charAt(start) == '<') 1 else 0
-  }.detectIndent(buffer)
-
-  override val indenters = List(
-    new XmlIndenter.CloseTag(indentCtx),
-    new XmlIndenter.NestedTag(indentCtx)
-  )
   override val commenter = new Commenter()
+  override def createIndenter() = new XmlIndenter(buffer, config)
 }
