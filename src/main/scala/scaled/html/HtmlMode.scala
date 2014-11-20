@@ -31,7 +31,7 @@ object HtmlConfig extends Config.Defs {
     effacer("variable.language.entity", typeStyle)
   )
 
-  val grammars = reloadable(Seq("CSS.ndf", "JS.ndf", "HTML.ndf"))(Grammar.parseNDFs)
+  val grammars = resource(Seq("CSS.ndf", "JS.ndf", "HTML.ndf"))(Grammar.parseNDFs)
 }
 
 @Major(name="html",
