@@ -7,3 +7,4 @@ license: New BSD
  scopts: -deprecation -feature
  depend: git:https://github.com/scaled/xml-mode.git
  depend: git:https://github.com/scaled/textmate-grammar.git
+ module: test
