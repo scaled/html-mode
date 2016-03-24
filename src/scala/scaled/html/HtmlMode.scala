@@ -47,5 +47,5 @@ class HtmlMode (env :Env) extends GrammarCodeMode(env) {
   override def effacers = HtmlConfig.effacers
 
   override val commenter = new Commenter()
-  override def createIndenter() = new XmlIndenter(buffer, config)
+  override def createIndenter() = new XmlIndenter(config)
 }
