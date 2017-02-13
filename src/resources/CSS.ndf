@@ -212,6 +212,7 @@ repository:
 patterns:
  include: #comment-block
  include: #selector
+ include: #rule-list
  multi:
   name: meta.at-rule.charset.css
   begin: \s*((@)charset\b)\s*
@@ -267,8 +268,3 @@ patterns:
     end: (?=\})
     patterns:
      include: $self
- multi:
-  begin: (?=\{)
-  end: (?!\G)
-  patterns:
-   include: #rule-list
