@@ -15,7 +15,7 @@ class HtmlGrammarPlugin extends GrammarPlugin {
   import EditorConfig._
   import CodeConfig._
 
-  override def grammars = Map("source.html" -> "HTML.ndf")
+  override def grammars = Map("text.html.basic" -> "HTML.ndf")
 
   override def effacers = List(
     effacer("comment.line", commentStyle),
@@ -41,7 +41,7 @@ class HtmlMode (env :Env) extends GrammarCodeMode(env) {
 
   override def dispose () {} // nada for now
 
-  override def langScope = "source.html"
+  override def langScope = "text.html.basic"
 
   override val commenter = new Commenter()
   override def createIndenter() = new XmlIndenter(config)
