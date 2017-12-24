@@ -9,13 +9,14 @@ import scaled.grammar._
 import scaled.code.{CodeConfig, Commenter}
 import java.nio.file.Path
 
-object CssConfig extends Config.Defs {
+@Plugin(tag="textmate-grammar")
+class CssGrammarPlugin extends GrammarPlugin {
   import EditorConfig._
   import CodeConfig._
-  import GrammarConfig._
 
-  // maps TextMate grammar scopes to Scaled style definitions
-  val effacers = List(
+  override def grammars = Map("source.css" -> "CSS.ndf")
+
+  override def effacers = List(
     effacer("comment.line", commentStyle),
     effacer("comment.block", docStyle),
     effacer("constant", constantStyle),
@@ -30,8 +31,6 @@ object CssConfig extends Config.Defs {
     effacer("support.constant.font-name", stringStyle),
     effacer("support.constant", constantStyle)
   )
-
-  val grammars = resource(Seq("CSS.ndf"))(Grammar.parseNDFs)
 }
 
 @Major(name="css",
@@ -42,9 +41,7 @@ class CssMode (env :Env) extends GrammarCodeMode(env) {
 
   override def dispose () {} // nada for now
 
-  override def configDefs = CssConfig :: super.configDefs
-  override def grammars = CssConfig.grammars.get
-  override def effacers = CssConfig.effacers
+  override def langScope = "source.css"
 
   override val commenter = new Commenter()
   override def createIndenter() = new CssIndenter(config)

@@ -25,7 +25,7 @@ class HtmlTest {
     /* 6*/ "</foo>",
     /* 7*/ "}").mkString("\n")
 
-  val html = Grammar.parseNDF(getClass.getClassLoader.getResourceAsStream("HTML.ndf"))
+  val html = Grammar.parseNDF(getClass.getClassLoader.getResource("HTML.ndf"))
   val grammars = Seq(html)
 
   @Test def debugGrammar () {
@@ -33,7 +33,7 @@ class HtmlTest {
     // html.scopeNames foreach println
 
     val buffer = BufferImpl(new TextStore("Test.html", "", testHTMLCode))
-    val scoper = new Scoper(Grammar.Set(grammars), buffer, Nil)
+    val scoper = Grammar.testScoper(grammars, buffer, Nil)
     println(scoper.showMatchers(Set("#tag-stuff", "#entity")))
   }
 }
