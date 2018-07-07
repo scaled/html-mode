@@ -6,7 +6,7 @@ package scaled.html
 
 import scaled._
 import scaled.grammar._
-import scaled.code.{CodeConfig, Commenter}
+import scaled.code.{CodeConfig, Commenter, BlockIndenter}
 import java.nio.file.Path
 
 @Plugin(tag="textmate-grammar")
@@ -40,9 +40,9 @@ class CssGrammarPlugin extends GrammarPlugin {
 class CssMode (env :Env) extends GrammarCodeMode(env) {
 
   override def dispose () {} // nada for now
-
   override def langScope = "source.css"
-
   override val commenter = new Commenter()
-  override def createIndenter() = new CssIndenter(config)
+  override protected def createIndenter = new BlockIndenter(config, Seq(
+    new BlockIndenter.BlockCommentRule()
+  ))
 }
