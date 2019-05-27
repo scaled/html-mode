@@ -35,7 +35,7 @@ class CssGrammarPlugin extends GrammarPlugin {
 
 @Major(name="css",
        tags=Array("code", "project", "css"),
-       pats=Array(".*\\.css", ".*\\.scss"),
+       pats=Array(".*\\.css", ".*\\.scss", ".*\\.less"),
        desc="A major mode for editing CSS files.")
 class CssMode (env :Env) extends GrammarCodeMode(env) {
 
