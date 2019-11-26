@@ -39,7 +39,7 @@ class CssGrammarPlugin extends GrammarPlugin {
        desc="A major mode for editing CSS files.")
 class CssMode (env :Env) extends GrammarCodeMode(env) {
 
-  override def dispose () {} // nada for now
+  override def dispose () :Unit = {} // nada for now
   override def langScope = "source.css"
   override val commenter = new Commenter()
   override protected def createIndenter = new BlockIndenter(config, Seq(

@@ -28,7 +28,7 @@ class HtmlTest {
   val html = Grammar.parseNDF(getClass.getClassLoader.getResource("HTML.ndf"))
   val grammars = Seq(html)
 
-  @Test def debugGrammar () {
+  @Test def debugGrammar () :Unit = {
     // html.print(System.out)
     // html.scopeNames foreach println
 

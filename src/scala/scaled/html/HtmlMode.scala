@@ -39,7 +39,7 @@ class HtmlGrammarPlugin extends GrammarPlugin {
        desc="A major mode for editing HTML files.")
 class HtmlMode (env :Env) extends GrammarCodeMode(env) {
 
-  override def dispose () {} // nada for now
+  override def dispose () :Unit = {} // nada for now
 
   override def langScope = "text.html.basic"
 
